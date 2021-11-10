@@ -1,5 +1,6 @@
 #language:pt   
-Funcionalidade:Pedidos finalizados 
+Funcionalidade:Pedidos finalizados
+@E2E 
 Cenario: Finalizar pedido 
 
     Dado que acessa a pagina de produto 

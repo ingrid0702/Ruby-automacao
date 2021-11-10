@@ -9,12 +9,14 @@ Quando("adicionar ao carrinho e finalizar o pedido") do
   sleep 5
   find("#product-addtocart-button").click
   sleep 5
-  visit "https://magento.nublue.co.uk/checkout/cart/"
+  expect(page).to have_text "You added Radiant Tee to your shopping cart."
+  click_link "shopping cart"
+  sleep 8
   find('button[data-role="proceed-to-checkout"]').click
 end
 
 Quando("preenche os campos de dados pessoas com email {string} nome {string}") do |email, nome|
-  sleep 15
+  sleep 6
   find("input[name='username']").set email
   find("input[name='firstname']").set nome
 end
@@ -35,9 +37,11 @@ Quando("os dados de endereço que são rua {string}  bairro {string} Complemento
   find('input[name="telephone"]').set('81 9999-9999')
   sleep 10
   find('button[data-role="opc-continue"]').click
-  sleep 15
+  sleep 10
 end
 
 Então("a compra sera finalizada com sucesso") do
   find('.payment-method._active button[type="submit"]').click
+  sleep 10
+  expect(page).to have_text "Thank you for your purchase!"
 end
